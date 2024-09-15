@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: blanchedalmond;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .cal {
+            background-color: rgb(247, 245, 143);
+            border: 5px solid black;
+            padding: 15px;
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            height: 40px;
+            text-align: right;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 2px solid black;
+        }
+        button {
+            background-color: rgb(165, 42, 52);
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(145, 32, 42);
+        }
+        .clear button {
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cal">
+        <h1>Calculator</h1>
+        <div>
+            <input type="text" id="inp" readonly>
+        </div>
+        <div class="clear">
+            <button onclick="clr()">Clear All</button>
+            <button onclick="clr1()">Clear</button>
+        </div>
+        <div>
+            <button onclick="btn(9)">9</button>
+            <button onclick="btn(8)">8</button>
+            <button onclick="btn(7)">7</button>
+            <button onclick="btn('+')">+</button>
+        </div>
+        <div>
+            <button onclick="btn(6)">6</button>
+            <button onclick="btn(5)">5</button>
+            <button onclick="btn(4)">4</button>
+            <button onclick="btn('-')">-</button>
+        </div>
+        <div>
+            <button onclick="btn(3)">3</button>
+            <button onclick="btn(2)">2</button>
+            <button onclick="btn(1)">1</button>
+            <button onclick="btn('.')">.</button>
+        </div>
+        <div>
+            <button onclick="btn(0)">0</button>
+            <button onclick="btn('/')">/</button>
+            <button onclick="btn('*')">*</button>
+            <button onclick="equ()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function btn(val) {
+            document.getElementById("inp").value += val;
+        }
+
+        function equ() {
+            try {
+                var a = document.getElementById('inp').value;
+                document.getElementById('inp').value = eval(a);
+            } catch (e) {
+                document.getElementById('inp').value = 'Error';
+            }
+        }
+
+        function clr() {
+            document.getElementById('inp').value = '';
+        }
+
+        function clr1() {
+            var a = document.getElementById('inp').value;
+            document.getElementById('inp').value = a.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
